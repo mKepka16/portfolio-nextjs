@@ -1,0 +1,20 @@
+@import '/styles/_variables.scss';
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 18px;
+}
+
+.nav_item {
+  color: $text-gray;
+  font-size: 16px;
+  padding: 8px;
+  margin: 4px;
+  cursor: pointer;
+  font-weight: 300;
+
+  &:hover {
+    color: $text-gray-hover;
+  }
+}
