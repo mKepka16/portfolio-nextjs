@@ -1,11 +1,9 @@
 import React, { PropsWithChildren, MouseEvent } from 'react';
-import styles from '/styles/dummy/BigButton.module.scss';
+import styles from '/styles/dummy/Button.module.scss';
 
-interface Props extends PropsWithChildren {
-  style?: React.CSSProperties;
-}
+interface Props extends PropsWithChildren {}
 
-export const BigButton: React.FC<Props> = ({ children, style }) => {
+export const Button: React.FC<Props> = ({ children }) => {
   const onClick = (e: MouseEvent) => {
     console.log('click');
   };
@@ -26,7 +24,6 @@ export const BigButton: React.FC<Props> = ({ children, style }) => {
 
   return (
     <button
-      style={style}
       className={styles.button}
       onClick={(e) => {
         const rect = (e.target as HTMLButtonElement).getBoundingClientRect();

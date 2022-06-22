@@ -1,1 +1,31 @@
 @import '/styles/variables';
+
+.container {
+  background-color: $primary;
+  padding-bottom: 1px;
+  padding: 0 10px 1px 10px;
+}
+
+.header {
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  padding: 76px 16px 28px 16px;
+}
+
+.description {
+  font-weight: 200;
+  margin: 0 10px;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.cards {
+  margin: 50px auto;
+  max-width: 300px;
+  @include light-box-shadow;
+  border: 1px solid $light-border-color;
+  background-color: $white;
+  border-radius: 12px;
+}

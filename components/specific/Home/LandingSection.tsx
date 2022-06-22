@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { BigButton } from '../../dummy/BigButton';
 import { Navigation } from '../../dummy/Navigation';
-import styles from '/styles/Home.LandingSection.module.scss';
+import styles from '/styles/Home/Home.LandingSection.module.scss';
 import ArrowDown from '/public/double-chevron-down.png';
 
 interface Props {}
