@@ -1,0 +1,64 @@
+@import '/styles/_variables.scss';
+
+.container {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  background-color: $primary-dark;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin: 150px auto 0 auto;
+  width: fit-content;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 15px 0 30px;
+
+  @media screen and (min-width: 600px) {
+    margin: 0;
+    margin-left: 100px;
+    justify-content: center;
+  }
+}
+
+.full_name {
+  font-weight: 600;
+  font-size: 46px;
+
+  @media screen and (min-width: 600px) {
+    font-size: 70px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 115px;
+  }
+}
+
+.role {
+  font-size: 22px;
+  margin: 8px 0 25px 0;
+
+  @media screen and (min-width: 1200px) {
+    font-size: 47px;
+  }
+}
+
+.arrow_down {
+  padding: 35px 0;
+  display: flex;
+  justify-content: center;
+  animation: arrowsAnimation 700ms infinite alternate;
+}
+
+@keyframes arrowsAnimation {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}

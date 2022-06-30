@@ -1,0 +1,83 @@
+@import '/styles/variables';
+
+.container {
+  scroll-snap-align: start;
+  background-color: $primary-dark;
+  padding: 440px 28px 70px 28px;
+
+  @media screen and (min-width: 1200px) {
+    padding-top: 70px;
+  }
+
+  @media screen and (min-width: 1400px) {
+    padding-left: 130px;
+  }
+}
+
+.main_text {
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+
+  @media screen and (min-width: 1200px) {
+    text-align: left;
+  }
+}
+
+a {
+  &:hover,
+  &:first-child:hover,
+  &:last-child:hover {
+    .nav_item {
+      .nav_item_text {
+        color: $text-gray_hover;
+      }
+      .line {
+        width: 120px;
+      }
+    }
+  }
+
+  &:first-child,
+  &:last-child {
+    .nav_item {
+      .line {
+        width: 45px;
+      }
+    }
+  }
+  &:first-child {
+    .nav_item {
+      margin-top: 25px;
+    }
+  }
+  &:last-child {
+    .nav_item {
+      margin-bottom: 25px;
+    }
+  }
+}
+
+.nav_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+  cursor: pointer;
+
+  @media screen and (min-width: 1200px) {
+    max-width: 40%;
+  }
+}
+
+.nav_item_text {
+  color: $text-gray;
+  font-size: 20px;
+}
+
+.line {
+  width: 90px;
+  height: 1px;
+  background-color: $text-gray;
+  transition: width 400ms;
+}

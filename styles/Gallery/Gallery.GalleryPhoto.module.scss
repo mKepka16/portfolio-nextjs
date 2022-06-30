@@ -1,0 +1,25 @@
+@import '/styles/_variables.scss';
+
+.image_wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/6;
+}
+
+.upper_line {
+  display: none;
+}
+
+.container:first-child .upper_line {
+  display: block;
+}
+
+.line {
+  height: 2px;
+  background-color: $primary;
+  margin: 10px 0;
+
+  @media screen and (min-width: 600px) {
+    margin: 20px 0;
+  }
+}
