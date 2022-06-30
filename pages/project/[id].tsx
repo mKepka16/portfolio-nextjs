@@ -14,6 +14,7 @@ import {
   StrapiResponseT,
   StrapiArrayResponseT,
 } from '../../strapiTypes/strapi';
+import { strapi } from '../_app';
 
 interface Props {
   projectPageData: ProjectPageT;
@@ -72,7 +73,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await axios.get<StrapiArrayResponseT<ProjectPageT>>(
+  const res = await strapi.get<StrapiArrayResponseT<ProjectPageT>>(
     '/project-pages'
   );
   const ids = res.data.data.map((projectPage) => projectPage.id);
@@ -113,7 +114,7 @@ async function fetchProjectData(id: string): Promise<ProjectPageT> {
     },
     { encodeValuesOnly: true }
   );
-  const res = await axios.get<StrapiResponseT<ProjectPageT>>(
+  const res = await strapi.get<StrapiResponseT<ProjectPageT>>(
     `project-pages/${id}?${query}`
   );
 

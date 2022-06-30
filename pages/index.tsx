@@ -13,6 +13,7 @@ import { HomePageT } from '../strapiTypes/home_page';
 import { StrapiResponseT } from '../strapiTypes/strapi';
 import { ContactT } from '../strapiTypes/contact';
 import { fetchContactData } from '../helpers';
+import { strapi } from './_app';
 
 interface Props {
   homeData: HomePageT;
@@ -38,7 +39,7 @@ const Home: NextPage<Props> = ({ homeData, contactData }) => {
             homeData.job_area_right_column,
           ]}
         />
-        <div className={styles.line}></div>
+        <div className={styles.line} id='projects'></div>
         <Projects
           headers={homeData.works_content}
           endHeaders={homeData.after_works_content}
@@ -47,9 +48,6 @@ const Home: NextPage<Props> = ({ homeData, contactData }) => {
       </main>
       <Contact contact={contactData} />
       <Footer footer_text={contactData.footer_text} />
-      <div style={{ color: 'black', whiteSpace: 'pre-wrap' }}>
-        {JSON.stringify(contactData, null, 2)}
-      </div>
     </div>
   );
 };
@@ -98,7 +96,7 @@ async function fetchHomeData(): Promise<HomePageT> {
     },
     { encodeValuesOnly: true }
   );
-  const res = await axios.get<StrapiResponseT<HomePageT>>(
+  const res = await strapi.get<StrapiResponseT<HomePageT>>(
     `/home-page?${query}`
   );
   return res.data.data.attributes;

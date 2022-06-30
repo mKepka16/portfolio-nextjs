@@ -105,12 +105,11 @@
   padding: 20px;
   width: 100%;
   max-width: 430px;
-  margin-bottom: 42px;
+  margin-top: 42px;
 }
 
 .textarea {
   min-height: 256px;
-  margin-bottom: 20px;
 }
 
 .right_arrow {
@@ -140,4 +139,26 @@
   max-width: 430px;
   margin: 0 auto;
   padding: 16px 0;
+  margin-top: 42px;
+}
+
+.error_message {
+  color: red;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: -22px;
+  line-height: 12px;
+}
+
+.success_message {
+  font-weight: 600;
+  color: rgb(33, 221, 23);
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: -22px;
+  line-height: 12px;
 }

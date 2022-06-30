@@ -3,7 +3,7 @@
 .container {
   scroll-snap-align: start;
   background-color: $primary-dark;
-  padding: 420px 28px 70px 28px;
+  padding: 440px 28px 70px 28px;
 
   @media screen and (min-width: 1200px) {
     padding-top: 70px;
@@ -24,37 +24,46 @@
   }
 }
 
+a {
+  &:hover,
+  &:first-child:hover,
+  &:last-child:hover {
+    .nav_item {
+      .nav_item_text {
+        color: $text-gray_hover;
+      }
+      .line {
+        width: 120px;
+      }
+    }
+  }
+
+  &:first-child,
+  &:last-child {
+    .nav_item {
+      .line {
+        width: 45px;
+      }
+    }
+  }
+  &:first-child {
+    .nav_item {
+      margin-top: 25px;
+    }
+  }
+  &:last-child {
+    .nav_item {
+      margin-bottom: 25px;
+    }
+  }
+}
+
 .nav_item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 25px 0;
   cursor: pointer;
-
-  &:hover,
-  &:first-child:hover,
-  &:last-child:hover {
-    .nav_item_text {
-      color: $text-gray_hover;
-    }
-    .line {
-      width: 120px;
-    }
-  }
-
-  &:first-child,
-  &:last-child {
-    .line {
-      width: 45px;
-    }
-  }
-
-  &:first-child {
-    margin-top: 25px;
-  }
-  &:last-child {
-    margin-bottom: 25px;
-  }
 
   @media screen and (min-width: 1200px) {
     max-width: 40%;

@@ -13,7 +13,7 @@ interface Props {
 export const LandingSection: React.FC<Props> = ({ title, photosAmount }) => {
   return (
     <div className={styles.container}>
-      <Navigation />
+      <Navigation home={true} back={true} />
       <header className={styles.header}>
         <h2 className={styles.full_name}>{title}</h2>
         <h4 className={styles.role}>{photosAmount} photos</h4>

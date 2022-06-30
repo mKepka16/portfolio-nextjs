@@ -3,11 +3,15 @@
 .image_wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/6;
 }
 
-.container:last-child .line {
+.upper_line {
   display: none;
+}
+
+.container:first-child .upper_line {
+  display: block;
 }
 
 .line {

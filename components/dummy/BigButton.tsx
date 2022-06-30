@@ -1,13 +1,13 @@
 import React, { PropsWithChildren, MouseEvent } from 'react';
 import styles from '/styles/dummy/BigButton.module.scss';
 
-interface Props extends PropsWithChildren {}
+type Props = PropsWithChildren &
+  React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >;
 
-export const BigButton: React.FC<Props> = ({ children }) => {
-  const onClick = (e: MouseEvent) => {
-    console.log('click');
-  };
-
+export const BigButton: React.FC<Props> = ({ children, ...buttonProps }) => {
   const [coords, setCoords] = React.useState({ x: -1, y: -1 });
   const [isRippling, setIsRippling] = React.useState(false);
 
@@ -24,11 +24,12 @@ export const BigButton: React.FC<Props> = ({ children }) => {
 
   return (
     <button
+      {...buttonProps}
       className={styles.button}
       onClick={(e) => {
         const rect = (e.target as HTMLButtonElement).getBoundingClientRect();
         setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-        onClick && onClick(e);
+        buttonProps.onClick?.(e);
       }}
     >
       {isRippling ? (

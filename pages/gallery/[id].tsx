@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import qs from 'qs';
@@ -16,6 +15,7 @@ import {
   StrapiResponseT,
   StrapiArrayResponseT,
 } from '../../strapiTypes/strapi';
+import { strapi } from '../_app';
 
 interface Props {
   galleryPageData: GalleryPageT;
@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await axios.get<StrapiArrayResponseT<GalleryPageT>>(
+  const res = await strapi.get<StrapiArrayResponseT<GalleryPageT>>(
     '/gallery-pages'
   );
   const ids = res.data.data.map((galleryPage) => galleryPage.id);
@@ -88,7 +88,7 @@ async function fetchGalleryData(id: string): Promise<GalleryPageT> {
     },
     { encodeValuesOnly: true }
   );
-  const res = await axios.get<StrapiResponseT<GalleryPageT>>(
+  const res = await strapi.get<StrapiResponseT<GalleryPageT>>(
     `gallery-pages/${id}?${query}`
   );
 

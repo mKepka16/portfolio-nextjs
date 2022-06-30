@@ -3,6 +3,7 @@ import qs from 'qs';
 import { Header } from './components/specific/Project/modules/Header';
 import { ImageWithDescription } from './components/specific/Project/modules/ImageWithDescription';
 import { NumericHeader } from './components/specific/Project/modules/NumericHeader';
+import { strapi } from './pages/_app';
 import { HeaderContentT } from './strapiTypes/components/common';
 import {
   ImageWithDescriptionT,
@@ -45,6 +46,6 @@ export async function fetchContactData(): Promise<ContactT> {
     },
     { encodeValuesOnly: true }
   );
-  const res = await axios.get<StrapiResponseT<ContactT>>(`/contact?${query}`);
+  const res = await strapi.get<StrapiResponseT<ContactT>>(`/contact?${query}`);
   return res.data.data.attributes;
 }

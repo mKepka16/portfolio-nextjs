@@ -21,6 +21,15 @@
   }
 }
 
+.button:disabled {
+  cursor: default;
+  background: linear-gradient(
+    93.52deg,
+    darken($color: $gradient-from, $amount: 40%) 16.68%,
+    darken($color: $gradient-to, $amount: 40%) 161.78%
+  );
+}
+
 .button > .ripple {
   width: 20px;
   height: 20px;
