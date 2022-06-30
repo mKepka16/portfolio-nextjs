@@ -61,6 +61,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       galleryPageData,
       contactData,
     },
+    revalidate: 10,
   };
 };
 
@@ -73,7 +74,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   };
 };
 

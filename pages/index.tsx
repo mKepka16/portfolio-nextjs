@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const homeData = await fetchHomeData();
   const contactData = await fetchContactData();
 
-  return { props: { homeData, contactData } };
+  return { props: { homeData, contactData }, revalidate: 10 };
 };
 
 async function fetchHomeData(): Promise<HomePageT> {
