@@ -46,10 +46,6 @@ const GalleryPage: NextPage<Props> = ({ galleryPageData, contactData }) => {
 
       <Contact contact={contactData} />
       <Footer footer_text={contactData.footer_text} />
-
-      {/* <span style={{ color: 'black', whiteSpace: 'pre-wrap' }}>
-        {JSON.stringify(galleryPageData, null, 2)}
-      </span> */}
     </div>
   );
 };
