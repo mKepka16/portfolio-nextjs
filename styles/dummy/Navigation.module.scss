@@ -17,4 +17,14 @@
   &:hover {
     color: $text-gray-hover;
   }
+
+  @media screen and (min-width: 600px) {
+    font-size: 20px;
+    padding: 12px 20px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 24px;
+    padding: 12px 24px;
+  }
 }

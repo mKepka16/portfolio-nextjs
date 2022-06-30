@@ -1,0 +1,40 @@
+@import '/styles/_variables.scss';
+
+.container {
+  position: relative;
+  background-color: red;
+
+  header {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    line-break: anywhere;
+    width: 100%;
+
+    .header {
+      font-size: 28px;
+      font-weight: 600;
+
+      @media screen and (min-width: 800px) {
+        font-size: 38px;
+      }
+
+      @media screen and (min-width: 1200px) {
+        font-size: 56px;
+      }
+    }
+
+    .subheader {
+      font-size: 14px;
+      margin-top: 5px;
+
+      @media screen and (min-width: 800px) {
+        font-size: 18px;
+      }
+      @media screen and (min-width: 1200px) {
+        font-size: 27px;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import '/styles/_variables.scss';
+
+.image_wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.container:last-child .line {
+  display: none;
+}
+
+.line {
+  height: 2px;
+  background-color: $primary;
+  margin: 10px 0;
+
+  @media screen and (min-width: 600px) {
+    margin: 20px 0;
+  }
+}

@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from '/styles/Home/Home.Projects.module.scss';
-import { HeaderContentT, ProjectT } from '../../../types';
 import { Project } from './Project';
+import { HeaderContentT } from '../../../strapiTypes/components/common';
+import { ProjectT } from '../../../strapiTypes/project';
 
 interface Props {
   headers: HeaderContentT;
@@ -30,11 +31,11 @@ export const Projects: React.FC<Props> = ({
       ))}
 
       <h2
-        className={styles.header}
+        className={styles.end_header}
         dangerouslySetInnerHTML={{ __html: endHeaders.header }}
       ></h2>
       <h4
-        className={styles.subheader}
+        className={styles.end_subheader}
         dangerouslySetInnerHTML={{ __html: endHeaders.content }}
       ></h4>
     </section>

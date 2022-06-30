@@ -1,8 +1,14 @@
 import React from 'react';
-import { ContactT } from '../../types';
 import styles from '/styles/dummy/Contact.module.scss';
 import Image from 'next/image';
 import { BigButton } from './BigButton';
+import ArrowRight from '/public/right-arrow.png';
+import { ContactT } from '../../strapiTypes/contact';
+import axios from 'axios';
+import { GetStaticProps } from 'next';
+import qs from 'qs';
+import { HomePageT } from '../../strapiTypes/home_page';
+import { StrapiResponseT } from '../../strapiTypes/strapi';
 
 interface Props {
   contact: ContactT;
@@ -15,7 +21,13 @@ export const Contact: React.FC<Props> = ({ contact }) => {
       <p className={styles.contact_info}>{contact.content.content}</p>
       <div className={styles.social_media_list}>
         {contact.social_media.map((sc) => (
-          <div key={sc.id} className={styles.social_media_container}>
+          <a
+            target='_blank'
+            href={sc.link}
+            key={sc.id}
+            className={styles.social_media_container}
+            rel='noreferrer'
+          >
             <Image
               src={
                 process.env.NEXT_PUBLIC_STRAPI_URL + sc.icon.data.attributes.url
@@ -25,7 +37,16 @@ export const Contact: React.FC<Props> = ({ contact }) => {
               height={35}
             />
             <span className={styles.social_media_text}>{sc.content}</span>
-          </div>
+
+            <div className={styles.right_arrow}>
+              <Image
+                src={ArrowRight}
+                alt='arrow right'
+                width={20}
+                height={20}
+              />
+            </div>
+          </a>
         ))}
       </div>
       <div className={styles.quick_contact_outer_container}>
@@ -42,15 +63,7 @@ export const Contact: React.FC<Props> = ({ contact }) => {
             placeholder='Your email...'
           />
           <textarea className={styles.textarea} placeholder='Message...' />
-          <BigButton
-            style={{
-              width: '100%',
-              maxWidth: 430,
-              margin: '0 auto',
-            }}
-          >
-            Send
-          </BigButton>
+          <BigButton>Send</BigButton>
         </div>
       </div>
     </section>

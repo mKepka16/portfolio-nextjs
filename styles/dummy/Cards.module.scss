@@ -1,9 +1,31 @@
 @import '/styles/variables';
 
 .container {
+  scroll-snap-align: start;
   background-color: $primary;
   padding-bottom: 1px;
   padding: 0 10px 1px 10px;
+  position: relative;
+
+  @media screen and (min-width: 950px) {
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: $white;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 57%;
+    }
+  }
+}
+
+.no_details_container {
+  @media screen and (min-width: 950px) {
+    &::before {
+      height: 30%;
+    }
+  }
 }
 
 .header {
@@ -15,17 +37,27 @@
 
 .description {
   font-weight: 200;
-  margin: 0 10px;
+  padding: 0 10px;
+  margin: 0 auto;
   font-size: 20px;
   line-height: 30px;
   text-align: center;
+  max-width: 560px;
 }
 
 .cards {
+  scroll-snap-align: center;
+  position: relative;
+  z-index: 5;
   margin: 50px auto;
   max-width: 300px;
   @include light-box-shadow;
   border: 1px solid $light-border-color;
   background-color: $white;
   border-radius: 12px;
+
+  @media screen and (min-width: 950px) {
+    max-width: 1200px;
+    display: flex;
+  }
 }

@@ -1,11 +1,19 @@
 @import '/styles/variables';
 
 .container {
+  scroll-snap-align: start;
   background-color: $primary;
   padding: 35px;
   position: relative;
   padding-bottom: 300px;
-  margin-bottom: 500px;
+
+  @media screen and (min-width: 1200px) {
+    padding-bottom: 100px;
+  }
+
+  @media screen and (min-width: 1400px) {
+    padding: 100px 140px;
+  }
 }
 
 .header {
@@ -19,15 +27,26 @@
   font-size: 20px;
   line-height: 24px;
   margin-bottom: 30px;
+
+  @media screen and (min-width: 1200px) {
+    max-width: 420px;
+  }
 }
 
 .social_media_list {
 }
 
 .social_media_container {
+  cursor: pointer;
   display: flex;
   align-items: center;
-  margin: 30px 0;
+  padding: 15px 0;
+  &:first-child {
+    margin-top: 15px;
+  }
+  &:last-child {
+    margin-bottom: 15px;
+  }
 }
 
 .social_media_text {
@@ -36,20 +55,37 @@
 }
 
 .quick_contact_outer_container {
+  pointer-events: none;
   position: absolute;
   bottom: 260px;
   transform: translateY(100%);
   left: 0;
   width: 100%;
   padding: 0 10px;
+
+  @media screen and (min-width: 1200px) {
+    bottom: 340px;
+  }
+  @media screen and (min-width: 1400px) {
+    bottom: 380px;
+  }
 }
 
 .quick_contact_container {
+  scroll-snap-align: start;
+  pointer-events: initial;
   background-color: $white;
   max-width: 620px;
   margin: 0 auto;
   padding: 20px;
   border-radius: 8px;
+
+  @media screen and (min-width: 1200px) {
+    margin-left: calc(72% - 310px);
+  }
+  @media screen and (min-width: 1400px) {
+    padding: 50px;
+  }
 }
 
 .quick_contact_header {
@@ -75,4 +111,33 @@
 .textarea {
   min-height: 256px;
   margin-bottom: 20px;
+}
+
+.right_arrow {
+  display: none;
+  margin-left: 10px;
+}
+
+.social_media_container:hover {
+  .right_arrow {
+    display: block;
+    animation: arrowsAnimation 500ms both;
+  }
+}
+
+@keyframes arrowsAnimation {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(15px);
+  }
+}
+
+.quick_contact_container button {
+  font-size: 20px;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 16px 0;
 }

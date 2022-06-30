@@ -6,16 +6,20 @@ import { Cards } from '../components/dummy/Cards';
 import { LandingSection } from '../components/specific/Home/LandingSection';
 import styles from '../styles/Home/Home.module.scss';
 import qs from 'qs';
-import { HomePageT, StrapiResponseT } from '../types';
 import { Projects } from '../components/specific/Home/Projects';
 import { Contact } from '../components/dummy/Contact';
 import { Footer } from '../components/dummy/Footer';
+import { HomePageT } from '../strapiTypes/home_page';
+import { StrapiResponseT } from '../strapiTypes/strapi';
+import { ContactT } from '../strapiTypes/contact';
+import { fetchContactData } from '../helpers';
 
 interface Props {
   homeData: HomePageT;
+  contactData: ContactT;
 }
 
-const Home: NextPage<Props> = ({ homeData }) => {
+const Home: NextPage<Props> = ({ homeData, contactData }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -34,16 +38,17 @@ const Home: NextPage<Props> = ({ homeData }) => {
             homeData.job_area_right_column,
           ]}
         />
+        <div className={styles.line}></div>
         <Projects
           headers={homeData.works_content}
           endHeaders={homeData.after_works_content}
           projects={homeData.projects.data.map((p) => p.attributes)}
         />
-        <Contact contact={homeData.contact} />
       </main>
-      <Footer footer_text={homeData.footer_text} />
+      <Contact contact={contactData} />
+      <Footer footer_text={contactData.footer_text} />
       <div style={{ color: 'black', whiteSpace: 'pre-wrap' }}>
-        {/* {JSON.stringify(homeData, null, 2)} */}
+        {JSON.stringify(contactData, null, 2)}
       </div>
     </div>
   );
@@ -52,6 +57,13 @@ const Home: NextPage<Props> = ({ homeData }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  const homeData = await fetchHomeData();
+  const contactData = await fetchContactData();
+
+  return { props: { homeData, contactData } };
+};
+
+async function fetchHomeData(): Promise<HomePageT> {
   const query = qs.stringify(
     {
       populate: {
@@ -89,7 +101,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const res = await axios.get<StrapiResponseT<HomePageT>>(
     `/home-page?${query}`
   );
-  console.log(JSON.stringify(res.data, null, 4));
-
-  return { props: { homeData: res.data.data.attributes } };
-};
+  return res.data.data.attributes;
+}
