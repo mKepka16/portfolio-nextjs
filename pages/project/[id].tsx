@@ -50,10 +50,6 @@ const ProjectPage: NextPage<Props> = ({ projectPageData, contactData }) => {
 
       <Contact contact={contactData} />
       <Footer footer_text={contactData.footer_text} />
-
-      {/* <span style={{ color: 'black', whiteSpace: 'pre-wrap' }}>
-        {JSON.stringify(projectPage, null, 2)}
-      </span> */}
     </div>
   );
 };
