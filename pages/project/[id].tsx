@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import qs from 'qs';
 import { Cards } from '../../components/dummy/Cards';
@@ -24,6 +25,11 @@ interface Props {
 const ProjectPage: NextPage<Props> = ({ projectPageData, contactData }) => {
   return (
     <div>
+      <Head>
+        <title>Project -Michał Kępka</title>
+        <meta name='description' content='Michał Kępka Project' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
       <LandingSection
         bigPhoto={projectPageData.big_photo}
         header={projectPageData.project.data.attributes.content}

@@ -3,6 +3,7 @@ import React from 'react';
 import { ImageWithDescriptionT } from '../../../../strapiTypes/components/project-pages';
 import styles from '../../../../styles/Project/modules/Project.ImageWithDescription.module.scss';
 import { Button } from '../../../dummy/Button';
+import { SmartLink } from '../../../dummy/SmartLink';
 
 interface Props {
   content: ImageWithDescriptionT;
@@ -32,7 +33,13 @@ export const ImageWithDescription: React.FC<Props> = ({ content }) => {
         )}
         <div className={styles.buttons}>
           {content.buttons.map((button) => (
-            <Button key={button.id}>{button.text}</Button>
+            <SmartLink
+              key={button.id}
+              isExternal={button.is_external}
+              link={button.link}
+            >
+              <Button>{button.text}</Button>
+            </SmartLink>
           ))}
         </div>
       </div>

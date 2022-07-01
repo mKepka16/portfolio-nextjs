@@ -1,0 +1,42 @@
+@import '/styles/variables';
+
+.container {
+  height: 100vh;
+  position: relative;
+}
+
+.pdf {
+  border: none;
+}
+
+.back_container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  cursor: pointer;
+  font-weight: 500;
+  z-index: 10;
+  align-items: center;
+
+  @media screen and (min-width: 800px) {
+    padding: 20px;
+  }
+}
+
+.arrow_wrapper {
+  width: 15px;
+  margin-right: 10px;
+  transition: all 200ms;
+}
+
+.back_container:hover .arrow_wrapper {
+  transform: translateX(-5px);
+
+  @media screen and (min-width: 800px) {
+    transform: translateX(-10px);
+  }
+}

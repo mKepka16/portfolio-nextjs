@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import qs from 'qs';
 import { Cards } from '../../components/dummy/Cards';
@@ -27,6 +28,11 @@ const GalleryPage: NextPage<Props> = ({ galleryPageData, contactData }) => {
 
   return (
     <div>
+      <Head>
+        <title>Gallery - Michał Kępka</title>
+        <meta name='description' content='Michał Kępka Gallery' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
       <LandingSection
         photosAmount={galleryPageData.photos.data.length}
         title={galleryPageData.title}
