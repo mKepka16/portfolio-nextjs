@@ -4,6 +4,8 @@ import { ImageWithDescriptionT } from '../../../../strapiTypes/components/projec
 import styles from '../../../../styles/Project/modules/Project.ImageWithDescription.module.scss';
 import { Button } from '../../../dummy/Button';
 import { SmartLink } from '../../../dummy/SmartLink';
+import { motion } from 'framer-motion';
+import { fadeIn } from '../../../../helpers';
 
 interface Props {
   content: ImageWithDescriptionT;
@@ -13,7 +15,13 @@ export const ImageWithDescription: React.FC<Props> = ({ content }) => {
   return (
     <div className={styles.container}>
       <div className={styles.image_container}>
-        <div className={styles.image_wrapper}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          viewport={{ once: true }}
+          className={styles.image_wrapper}
+        >
           <Image
             src={
               process.env.NEXT_PUBLIC_STRAPI_URL +
@@ -24,14 +32,18 @@ export const ImageWithDescription: React.FC<Props> = ({ content }) => {
             height={content.image.data.attributes.height}
             layout='intrinsic'
           />
-        </div>
+        </motion.div>
       </div>
       <div className={styles.text_panel}>
-        <p className={styles.description}>{content.description}</p>
+        <motion.p {...fadeIn} className={styles.description}>
+          {content.description}
+        </motion.p>
         {content.additional_info && (
-          <p className={styles.additional_info}>{content.additional_info}</p>
+          <motion.p {...fadeIn} className={styles.additional_info}>
+            {content.additional_info}
+          </motion.p>
         )}
-        <div className={styles.buttons}>
+        <motion.div {...fadeIn} className={styles.buttons}>
           {content.buttons.map((button) => (
             <SmartLink
               key={button.id}
@@ -41,7 +53,7 @@ export const ImageWithDescription: React.FC<Props> = ({ content }) => {
               <Button>{button.text}</Button>
             </SmartLink>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

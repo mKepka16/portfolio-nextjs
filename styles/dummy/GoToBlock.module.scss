@@ -10,6 +10,7 @@
   align-items: center;
   position: relative;
   cursor: pointer;
+  transition: all 500ms;
 
   @media screen and (min-width: 600px) {
     padding: 0 50px;
@@ -34,7 +35,7 @@
     height: 0;
     top: 0;
     left: 0;
-    background-color: black;
+    background-color: rgb(98, 98, 98);
     position: absolute;
     transition: all 500ms;
     z-index: 2;
@@ -46,7 +47,7 @@
     height: 0;
     top: 0;
     left: 0;
-    background-color: $primary;
+    background-color: rgb(227, 227, 227);
     position: absolute;
     transition: all 500ms;
     transition-delay: 200ms;
@@ -54,7 +55,10 @@
   }
 
   &:hover {
+    color: $text-dark;
+
     .arrow_wrapper {
+      filter: invert(100%);
       transform: translateX(10px);
 
       @media screen and (min-width: 1200px) {
@@ -67,7 +71,7 @@
     }
 
     &::after {
-      height: calc(100% - 4px);
+      height: 100%;
     }
   }
 }
@@ -95,8 +99,9 @@
 }
 
 .arrow_wrapper {
+  filter: invert(0%);
   width: 50px;
-  transition: transform 200ms;
+  transition: all 200ms;
 
   @media screen and (min-width: 900px) {
     width: 70px;

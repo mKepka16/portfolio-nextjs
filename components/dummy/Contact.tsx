@@ -6,8 +6,10 @@ import ArrowRight from '/public/right-arrow.png';
 import { ContactT } from '../../strapiTypes/contact';
 import { QuickContactData } from '../../pages/api/quick-contact';
 import axios from 'axios';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
+import { motion } from 'framer-motion';
+import { fadeIn } from '../../helpers';
 
 interface Props {
   contact: ContactT;
@@ -30,11 +32,19 @@ export const Contact: React.FC<Props> = ({ contact }) => {
 
   return (
     <section className={styles.container} id='contact'>
-      <h2 className={styles.header}>{contact.content.header}</h2>
-      <p className={styles.contact_info}>{contact.content.content}</p>
+      <motion.h2 {...fadeIn} className={styles.header}>
+        {contact.content.header}
+      </motion.h2>
+      <motion.p {...fadeIn} className={styles.contact_info}>
+        {contact.content.content}
+      </motion.p>
       <div className={styles.social_media_list}>
-        {contact.social_media.map((sc) => (
-          <a
+        {contact.social_media.map((sc, i) => (
+          <motion.a
+            viewport={{ once: true, amount: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 + 0.3 * i }}
             target='_blank'
             href={sc.link}
             key={sc.id}
@@ -59,11 +69,15 @@ export const Contact: React.FC<Props> = ({ contact }) => {
                 height={20}
               />
             </div>
-          </a>
+          </motion.a>
         ))}
       </div>
       <div className={styles.quick_contact_outer_container}>
-        <div className={styles.quick_contact_container}>
+        <motion.div
+          {...fadeIn}
+          viewport={{ once: true, amount: 0.4 }}
+          className={styles.quick_contact_container}
+        >
           <h2 className={styles.quick_contact_header}>Quick contact</h2>
           <Formik
             initialValues={{ name: '', email: '', message: '' }}
@@ -119,7 +133,7 @@ export const Contact: React.FC<Props> = ({ contact }) => {
               </Form>
             )}
           </Formik>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

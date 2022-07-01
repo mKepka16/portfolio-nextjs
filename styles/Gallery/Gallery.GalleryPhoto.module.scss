@@ -3,7 +3,8 @@
 .image_wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/6;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .upper_line {

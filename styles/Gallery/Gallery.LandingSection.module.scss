@@ -2,11 +2,15 @@
 
 .container {
   scroll-snap-align: start;
-  min-height: 100vh;
+  min-height: 95vh;
   background-color: $primary-dark;
   position: relative;
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: 1200px) {
+    min-height: 100vh;
+  }
 }
 
 .header {

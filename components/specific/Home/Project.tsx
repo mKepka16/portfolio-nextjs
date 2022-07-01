@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Button } from '../../dummy/Button';
 import Link from 'next/link';
 import { ProjectT } from '../../../strapiTypes/project';
+import { motion } from 'framer-motion';
 
 interface Props {
   project: ProjectT;
@@ -12,6 +13,13 @@ interface Props {
 export const Project: React.FC<Props> = ({ project }) => {
   return (
     <div className={styles.container}>
+      <motion.div
+        initial={{ translateX: 0 }}
+        whileInView={{ translateX: '100%' }}
+        transition={{ duration: 0.5 }}
+        className={styles.cover}
+        viewport={{ once: true, amount: 1 }}
+      ></motion.div>
       <Image
         src={
           process.env.NEXT_PUBLIC_STRAPI_URL +

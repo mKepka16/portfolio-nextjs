@@ -22,7 +22,7 @@ interface Props {
 
 const Home: NextPage<Props> = ({ homeData, contactData }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id='home'>
       <Head>
         <title>Michał Kępka</title>
         <meta name='description' content='Michał Kępka Porfolio' />
@@ -47,7 +47,7 @@ const Home: NextPage<Props> = ({ homeData, contactData }) => {
         />
       </main>
       <Contact contact={contactData} />
-      <Footer footer_text={contactData.footer_text} />
+      <Footer footer_text={contactData.footer_text} isHomePage={true} />
     </div>
   );
 };

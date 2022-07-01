@@ -3,6 +3,8 @@ import styles from '/styles/Home/Home.Projects.module.scss';
 import { Project } from './Project';
 import { HeaderContentT } from '../../../strapiTypes/components/common';
 import { ProjectT } from '../../../strapiTypes/project';
+import { motion } from 'framer-motion';
+import { headerFadeIn } from '../../../helpers';
 
 interface Props {
   headers: HeaderContentT;
@@ -17,27 +19,31 @@ export const Projects: React.FC<Props> = ({
 }) => {
   return (
     <section className={styles.container}>
-      <h2
+      <motion.h2
+        {...headerFadeIn}
         className={styles.header}
         dangerouslySetInnerHTML={{ __html: headers.header }}
-      ></h2>
-      <h4
+      ></motion.h2>
+      <motion.h4
+        {...headerFadeIn}
         className={styles.subheader}
         dangerouslySetInnerHTML={{ __html: headers.content }}
-      ></h4>
+      ></motion.h4>
 
       {projects.map((p) => (
         <Project key={p.createdAt} project={p} />
       ))}
 
-      <h2
+      <motion.h2
+        {...headerFadeIn}
         className={styles.end_header}
         dangerouslySetInnerHTML={{ __html: endHeaders.header }}
-      ></h2>
-      <h4
+      ></motion.h2>
+      <motion.h4
+        {...headerFadeIn}
         className={styles.end_subheader}
         dangerouslySetInnerHTML={{ __html: endHeaders.content }}
-      ></h4>
+      ></motion.h4>
     </section>
   );
 };

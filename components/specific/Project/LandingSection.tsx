@@ -4,6 +4,8 @@ import { StrapiPhotoT, StrapiResponseT } from '../../../strapiTypes/strapi';
 import styles from '../../../styles/Project/Project.LandingSection.module.scss';
 import Image from 'next/image';
 import { Navigation } from '../../dummy/Navigation';
+import { motion } from 'framer-motion';
+import { headerFadeIn } from '../../../helpers';
 
 interface Props {
   bigPhoto: StrapiResponseT<StrapiPhotoT>;
@@ -13,7 +15,15 @@ interface Props {
 export const LandingSection: React.FC<Props> = ({ bigPhoto, header }) => {
   return (
     <div className={styles.container}>
-      <Navigation floating={true} back={true} />
+      <Navigation
+        floating={true}
+        back={true}
+        rightPanel={[
+          { label: 'Contact', link: '#contact', isAnchorLink: true },
+          { label: 'Projects', link: '/#projects', isAnchorLink: false },
+          { label: 'CV', link: '/cv', isAnchorLink: false },
+        ]}
+      />
       <Image
         src={process.env.NEXT_PUBLIC_STRAPI_URL + bigPhoto.data.attributes.url}
         alt={bigPhoto.data.attributes.alternativeText}
@@ -22,8 +32,12 @@ export const LandingSection: React.FC<Props> = ({ bigPhoto, header }) => {
         layout='responsive'
       />
       <header>
-        <h2 className={styles.header}>{header.header}</h2>
-        <h6 className={styles.subheader}>{header.content}</h6>
+        <motion.h2 {...headerFadeIn} className={styles.header}>
+          {header.header}
+        </motion.h2>
+        <motion.h6 {...headerFadeIn} className={styles.subheader}>
+          {header.content}
+        </motion.h6>
       </header>
     </div>
   );

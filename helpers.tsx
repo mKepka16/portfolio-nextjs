@@ -1,4 +1,3 @@
-import axios from 'axios';
 import qs from 'qs';
 import { Header } from './components/specific/Project/modules/Header';
 import { ImageWithDescription } from './components/specific/Project/modules/ImageWithDescription';
@@ -49,3 +48,17 @@ export async function fetchContactData(): Promise<ContactT> {
   const res = await strapi.get<StrapiResponseT<ContactT>>(`/contact?${query}`);
   return res.data.data.attributes;
 }
+
+// animations
+export const fadeIn = {
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  transition: { duration: 0.5, delay: 0.3 },
+  viewport: { once: true, amount: 1 },
+};
+export const headerFadeIn = {
+  initial: { scaleY: 0, transformOrigin: '0% 0%', opacity: 0 },
+  whileInView: { scaleY: 1, opacity: 1 },
+  transition: { duration: 0.5, delay: 0.5 },
+  viewport: { once: true, amount: 1 },
+};

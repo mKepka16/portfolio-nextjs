@@ -5,14 +5,19 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import styles from '/styles/dummy/Navigation.module.scss';
 import BackArrow from '/public/back-arrow.png';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 interface Props {
-  home?: boolean;
+  rightPanel: {
+    label: string;
+    link: string;
+    isAnchorLink: boolean;
+  }[];
   back?: boolean;
   floating?: boolean;
 }
 
-export const Navigation: React.FC<Props> = ({ home, back, floating }) => {
+export const Navigation: React.FC<Props> = ({ rightPanel, back, floating }) => {
   const router = useRouter();
   return (
     <nav className={cn(styles.container, floating && styles.floating)}>
@@ -27,20 +32,19 @@ export const Navigation: React.FC<Props> = ({ home, back, floating }) => {
         )}
       </div>
       <div className={styles.right_section}>
-        {home && (
-          <Link href='/'>
-            <a className={styles.nav_item}>Home</a>
-          </Link>
-        )}
-        <Link href='#contact'>
-          <a className={styles.nav_item}>Contact</a>
-        </Link>
-        <Link href='/#projects'>
-          <a className={styles.nav_item}>Projects</a>
-        </Link>
-        <Link href='/cv'>
-          <a className={styles.nav_item}>CV</a>
-        </Link>
+        {rightPanel.map((button, i) => {
+          if (button.isAnchorLink)
+            return (
+              <AnchorLink key={i} href={button.link}>
+                <span className={styles.nav_item}>{button.label}</span>
+              </AnchorLink>
+            );
+          return (
+            <Link key={i} href={button.link}>
+              <a className={styles.nav_item}>{button.label}</a>
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );
