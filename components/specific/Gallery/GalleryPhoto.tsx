@@ -12,8 +12,24 @@ interface Props {
 export const GalleryPhoto: React.FC<Props> = ({ photo }) => {
   return (
     <div className={styles.container}>
-      <div className={cn(styles.line, styles.upper_line)}></div>
-      <div className={cn(styles.line, styles.upper_line)}></div>
+      <motion.div
+        className={cn(styles.line, styles.upper_line)}
+        whileInView={{ translateX: '0%' }}
+        transition={{
+          duration: 1,
+        }}
+        initial={{ translateX: '-100%' }}
+        viewport={{ once: true }}
+      ></motion.div>
+      <motion.div
+        className={cn(styles.line, styles.upper_line)}
+        whileInView={{ translateX: '0%' }}
+        transition={{
+          duration: 1,
+        }}
+        initial={{ translateX: '100%' }}
+        viewport={{ once: true }}
+      ></motion.div>
 
       <motion.div
         className={styles.image_wrapper}
