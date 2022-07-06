@@ -91,6 +91,9 @@ export const Footer: React.FC<Props> = ({ footer_text, isHomePage }) => {
           </motion.a>
         </Link>
       </nav>
+      <div className={styles.copyright}>
+        <small>&copy; Copyright {new Date().getFullYear()}, Michał Kępka</small>
+      </div>
     </footer>
   );
 };

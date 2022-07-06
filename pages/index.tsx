@@ -28,7 +28,9 @@ const Home: NextPage<Props> = ({ homeData, contactData }) => {
         <meta name='description' content='Michał Kępka Porfolio' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <LandingSection />
+      <LandingSection
+        backgroundPhoto={homeData.background_photo.data.attributes}
+      />
       <main>
         <Cards
           header={homeData.bio.header}
@@ -65,6 +67,9 @@ async function fetchHomeData(): Promise<HomePageT> {
   const query = qs.stringify(
     {
       populate: {
+        background_photo: {
+          populate: '*',
+        },
         job_area_left_column: {
           populate: '*',
         },

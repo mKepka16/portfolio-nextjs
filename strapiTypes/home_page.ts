@@ -1,6 +1,11 @@
 import { HeaderContentT, InfoBoxT } from './components/common';
 import { ProjectT } from './project';
-import { StrapiAttributesT, StrapiArrayResponseT } from './strapi';
+import {
+  StrapiAttributesT,
+  StrapiArrayResponseT,
+  StrapiResponseT,
+  StrapiPhotoT,
+} from './strapi';
 
 export interface HomePageT extends StrapiAttributesT {
   job_area_left_column: InfoBoxT;
@@ -11,4 +16,5 @@ export interface HomePageT extends StrapiAttributesT {
   after_works_content: HeaderContentT;
   projects: StrapiArrayResponseT<ProjectT>;
   footer_text: string;
+  background_photo: StrapiResponseT<StrapiPhotoT>;
 }

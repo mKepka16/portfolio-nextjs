@@ -7,12 +7,26 @@ import ArrowDown from '/public/double-chevron-down.png';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { headerFadeIn } from '../../../helpers';
+import { StrapiPhotoT } from '../../../strapiTypes/strapi';
+import { useMediaQuery } from 'react-responsive';
 
-interface Props {}
+interface Props {
+  backgroundPhoto: StrapiPhotoT;
+}
 
-export const LandingSection: React.FC<Props> = () => {
+export const LandingSection: React.FC<Props> = ({ backgroundPhoto }) => {
+  const is1000px = useMediaQuery({ query: '(min-width: 1000px)' });
+
   return (
     <div className={styles.container}>
+      <div className={styles.background_photo}>
+        <Image
+          src={process.env.NEXT_PUBLIC_STRAPI_URL + backgroundPhoto.url}
+          alt={backgroundPhoto.alternativeText}
+          width={is1000px ? 800 : 600}
+          height={is1000px ? 800 : 600}
+        />
+      </div>
       <Navigation
         rightPanel={[
           { label: 'Contact', link: '#contact', isAnchorLink: true },
